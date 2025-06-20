@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://db54a28hcvy3a"]
+
+[ext_resource type="PackedScene" uid="uid://dujihxecfravc" path="res://assets/mymodels/CartBay.glb" id="1_gykh0"]
+[ext_resource type="Script" uid="uid://dsoxjii4f6v32" path="res://scripts/wall_collision.gd" id="1_wall"]
+[ext_resource type="Script" uid="uid://cexxskaah8v2" path="res://scripts/bay_detection.gd" id="2_bay"]
+
+[sub_resource type="StandardMaterial3D" id="mat_bay"]
+albedo_color = Color(0.3, 0.3, 0.3, 1)
+metallic = 0.4
+roughness = 0.6
+
+[sub_resource type="BoxShape3D" id="box_shape"]
+size = Vector3(0.1, 2, 4.01611)
+
+[node name="CartBay" type="Node3D"]
+
+[node name="Base" type="CSGBox3D" parent="."]
+visible = false
+size = Vector3(3, 0.1, 4)
+material = SubResource("mat_bay")
+
+[node name="BackWall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.92425)
+visible = false
+size = Vector3(3, 2, 0.1)
+material = SubResource("mat_bay")
+
+[node name="BackWallCollision" type="Node3D" parent="BackWall"]
+transform = Transform3D(-4.37114e-08, 0, 0.784646, 0, 1, 0, -1, 0, -3.4298e-08, -0.0352848, 0, -0.0463767)
+script = ExtResource("1_wall")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="BackWall/BackWallCollision"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackWall/BackWallCollision/StaticBody3D"]
+shape = SubResource("box_shape")
+
+[node name="CollisionArea" type="Area3D" parent="BackWall/BackWallCollision"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackWall/BackWallCollision/CollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+shape = SubResource("box_shape")
+
+[node name="LeftWall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45, 1, 0)
+visible = false
+size = Vector3(0.1, 2, 4)
+material = SubResource("mat_bay")
+
+[node name="LeftWallCollision" type="Node3D" parent="LeftWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191366, 0, 0)
+script = ExtResource("1_wall")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LeftWall/LeftWallCollision"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftWall/LeftWallCollision/StaticBody3D"]
+shape = SubResource("box_shape")
+
+[node name="CollisionArea" type="Area3D" parent="LeftWall/LeftWallCollision"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftWall/LeftWallCollision/CollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+shape = SubResource("box_shape")
+
+[node name="RightWall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45, 1, 0)
+visible = false
+size = Vector3(0.1, 2, 4)
+material = SubResource("mat_bay")
+
+[node name="RightWallCollision" type="Node3D" parent="RightWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.104822, 0, 0)
+script = ExtResource("1_wall")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RightWall/RightWallCollision"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightWall/RightWallCollision/StaticBody3D"]
+shape = SubResource("box_shape")
+
+[node name="CollisionArea" type="Area3D" parent="RightWall/RightWallCollision"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightWall/RightWallCollision/CollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+shape = SubResource("box_shape")
+
+[node name="DetectionZone" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00561333, 0.25, -2.01774)
+script = ExtResource("2_bay")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionZone"]
+transform = Transform3D(1, 0, 0, 3.55271e-15, 1, 0, 0, 0, 1, -0.243714, 8.84756e-09, 1.56279)
+shape = SubResource("box_shape")
+
+[node name="CartBay" parent="." instance=ExtResource("1_gykh0")]
+transform = Transform3D(74.9335, 7.81942e-07, 0, 6.45113e-07, 72.938, 0, 0, 0, 72.7876, 0.0623861, 1.27956, -0.423205)

@@ -1,0 +1,286 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" uid="uid://bfmoxyk8je2my" path="res://icon.svg" id="1_5d0m6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aewvx"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.819608)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="GDScript" id="GDScript_h3t7e"]
+script/source = "extends Control
+
+# Main menu script for Shopping Cart Racer
+
+func _ready():
+	# Show main menu panel by default
+	$MainPanel.visible = true
+	$InstructionsPanel.visible = false
+	$CreditsPanel.visible = false
+
+# Main menu buttons
+func _on_start_game_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/main.tscn\")
+
+func _on_instructions_pressed():
+	$MainPanel.visible = false
+	$InstructionsPanel.visible = true
+
+func _on_credits_pressed():
+	$MainPanel.visible = false
+	$CreditsPanel.visible = true
+
+func _on_quit_pressed():
+	get_tree().quit()
+
+# Return to main menu buttons
+func _on_return_to_menu_pressed():
+	$MainPanel.visible = true
+	$InstructionsPanel.visible = false
+	$CreditsPanel.visible = false
+"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_h3t7e")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.207843, 0.239216, 0.34902, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5d0m6")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.0
+offset_top = 60.0
+offset_right = 288.0
+offset_bottom = 129.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Shopping Cart Racer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aewvx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="StartGameButton" type="Button" parent="MainPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[node name="InstructionsButton" type="Button" parent="MainPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Instructions"
+
+[node name="CreditsButton" type="Button" parent="MainPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="MainPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+
+[node name="InstructionsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aewvx")
+
+[node name="Title" type="Label" parent="InstructionsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
+offset_top = 20.0
+offset_right = 92.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 28
+text = "Instructions"
+horizontal_alignment = 1
+
+[node name="InstructionsText" type="RichTextLabel" parent="InstructionsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -125.0
+offset_right = 215.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 18
+text = "Objective:
+Return the shopping cart to the cart bay without crashing it!
+
+Controls:
+W - Move Forward
+S - Move Backward
+A - Turn Left
+D - Turn Right
+
+Tips:
+- Avoid hitting obstacles like parked cars and trees
+- Don't drive too fast or you'll crash
+- Approach the cart bay from the front
+- Try to get the fastest time possible!
+
+Good luck, cart racer!"
+
+[node name="ReturnButton" type="Button" parent="InstructionsPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -50.0
+offset_right = 95.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 18
+text = "Return to Main Menu"
+
+[node name="CreditsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aewvx")
+
+[node name="Title" type="Label" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -92.0
+offset_top = 20.0
+offset_right = 92.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 28
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="CreditsText" type="RichTextLabel" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -80.0
+offset_right = 170.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 18
+text = "Shopping Cart Racer
+
+Created by:
+Xavier Francis Bibby
+
+Built with Godot Engine 4.4.1
+
+Assets:
+- Models: Kenney, PolyPizza, Quaternius
+"
+fit_content = true
+
+[node name="ReturnButton" type="Button" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -50.0
+offset_right = 95.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 18
+text = "Return to Main Menu"
+
+[connection signal="pressed" from="MainPanel/VBoxContainer/StartGameButton" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="MainPanel/VBoxContainer/InstructionsButton" to="." method="_on_instructions_pressed"]
+[connection signal="pressed" from="MainPanel/VBoxContainer/CreditsButton" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MainPanel/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="InstructionsPanel/ReturnButton" to="." method="_on_return_to_menu_pressed"]
+[connection signal="pressed" from="CreditsPanel/ReturnButton" to="." method="_on_return_to_menu_pressed"] 

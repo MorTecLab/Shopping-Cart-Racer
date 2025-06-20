@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsj77q0r4c6t3"]
+
+[ext_resource type="PackedScene" uid="uid://b8roww1wukkk" path="res://assets/GLB Kenny Cars/police.glb" id="1_l50dl"]
+[ext_resource type="Script" uid="uid://cpt4go8c4wj5" path="res://scripts/parked_car.gd" id="1_s7r6c"]
+[ext_resource type="PackedScene" uid="uid://bbg026qkbyi8l" path="res://scenes/ani_idle_police_woman.tscn" id="3_v8jsl"]
+[ext_resource type="Script" uid="uid://btr5kaiggtpsy" path="res://scenes/ani_idle_police_woman.gd" id="4_jmokc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xpvp"]
+size = Vector3(1.49634, 1.34253, 3.12546)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0964527, 0, -0.00744963)
+script = ExtResource("1_s7r6c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137162, 0.639771, 0.0193667)
+shape = SubResource("BoxShape3D_6xpvp")
+
+[node name="police" parent="StaticBody3D" instance=ExtResource("1_l50dl")]
+
+[node name="Ani_Idle_PoliceWoman" parent="." instance=ExtResource("3_v8jsl")]
+transform = Transform3D(-0.244895, 0, -0.297071, 0, 0.385, 0, 0.297071, 0, -0.244895, -1.2333, 0, 0.903952)
+script = ExtResource("4_jmokc")

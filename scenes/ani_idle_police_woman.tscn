@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbg026qkbyi8l"]
+
+[ext_resource type="PackedScene" uid="uid://bjkwqvfn0o1cd" path="res://assets/mymodels/Ani_Idle_PoliceWoman.fbx" id="1_78v63"]
+
+[node name="Ani_Idle_PoliceWoman" instance=ExtResource("1_78v63")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Armature_001" index="0"]
+bones/0/position = Vector3(0, 0, 0)
+bones/0/rotation = Quaternion(0, 0, 0.00754667, 0.999972)
+bones/1/position = Vector3(1.19478e-09, -3.07701e-08, 1.26202)
+bones/1/rotation = Quaternion(0.638938, -0.0128133, 0.011678, 0.769063)
+bones/3/rotation = Quaternion(0.0148252, -0.0410304, 0.995513, 0.0839726)
+bones/4/rotation = Quaternion(-0.125983, 0.00814502, 0.00956959, 0.991953)
+bones/5/rotation = Quaternion(0.453234, -0.0237213, 0.0537387, 0.889454)
+bones/8/rotation = Quaternion(0.161789, 0.0175692, -0.0211571, 0.986442)
+bones/19/rotation = Quaternion(1.15496e-06, -0.00574989, -2.03497e-07, 0.999983)
+bones/20/rotation = Quaternion(-3.67991e-06, 0.0298941, 3.58952e-07, 0.999553)
+bones/22/rotation = Quaternion(0.0630597, -0.00736314, -0.00510891, 0.99797)
+bones/24/rotation = Quaternion(-8.28886e-06, 0.00466061, -6.34627e-05, 0.999989)
+bones/25/rotation = Quaternion(-6.09476e-06, -0.00466404, 5.46821e-05, 0.999989)
+bones/27/rotation = Quaternion(0.0438805, 0.125888, 0.990731, -0.0260471)
+bones/28/rotation = Quaternion(-1.52666e-05, 0.0192492, 8.03507e-06, 0.999815)
+bones/29/rotation = Quaternion(-2.36949e-07, -0.0192459, -2.29614e-07, 0.999815)
+bones/31/rotation = Quaternion(-0.375152, -0.00748831, -0.0112369, 0.926865)
+bones/32/rotation = Quaternion(0.361223, 0.151231, -0.0273169, 0.919729)
+bones/33/rotation = Quaternion(0.193714, -0.0103943, 0.0432617, 0.980049)
+bones/46/rotation = Quaternion(0.191029, 0.00961876, 0.00569053, 0.981521)
+bones/48/rotation = Quaternion(-6.96196e-05, 0.00691935, -1.22339e-05, 0.999976)
+bones/49/rotation = Quaternion(6.65506e-05, 0.0401891, 1.42665e-05, 0.999192)
+bones/51/rotation = Quaternion(0.1188, -0.000584316, -0.0153033, 0.9928)
+bones/52/rotation = Quaternion(0.0196075, -0.00367109, -0.0138005, 0.999706)
+bones/53/rotation = Quaternion(-0.139257, -0.00462578, -0.013562, 0.990153)
+bones/54/rotation = Quaternion(0.168816, -0.00144292, 0.00544608, 0.985632)
+bones/55/rotation = Quaternion(-0.0113841, -0.0004378, 0.00561722, 0.999919)
+bones/56/rotation = Quaternion(-0.162757, -0.00432856, 0.0221799, 0.986407)
+bones/63/rotation = Quaternion(1, -4.96878e-06, 9.7241e-05, -0.000160055)
+bones/67/rotation = Quaternion(0.707107, 5.64941e-07, 0.707106, -5.64942e-07)
+bones/72/rotation = Quaternion(0.0375571, -0.165619, 0.767152, -0.618577)
+bones/73/rotation = Quaternion(0.0473383, 0.00536585, -0.556094, 0.829753)
+bones/74/rotation = Quaternion(0.177534, 0.0149931, 0.00184733, 0.983999)
+bones/75/rotation = Quaternion(-6.729e-07, -0.00760017, -3.50187e-07, 0.999971)
+bones/76/rotation = Quaternion(-4.61642e-06, -0.0580118, -2.01971e-06, 0.998316)
+bones/78/rotation = Quaternion(-0.155232, -0.0175532, 0.00820013, 0.987688)
+bones/80/rotation = Quaternion(0.0134796, -0.131925, -0.0612885, 0.989271)
+bones/82/rotation = Quaternion(8.52591e-07, 0.0358296, -8.01102e-07, 0.999358)
+bones/83/rotation = Quaternion(-1.61123e-06, -0.035828, 1.29646e-06, 0.999358)
+bones/85/rotation = Quaternion(-0.0400106, -0.168408, 0.805747, 0.5664)
+bones/86/rotation = Quaternion(0.0891842, -0.051776, 0.522131, 0.846608)
+bones/87/rotation = Quaternion(6.22366e-07, -0.00565482, -1.57279e-07, 0.999984)
+bones/88/rotation = Quaternion(-1.51505e-06, 0.00565665, -6.3427e-07, 0.999984)
+bones/90/rotation = Quaternion(0.130379, -0.0016329, -0.00411939, 0.991454)
+bones/91/rotation = Quaternion(-3.70958e-07, 0.00112796, 6.07688e-07, 0.999999)
+bones/92/rotation = Quaternion(-4.71377e-06, 0.0596082, 1.98025e-06, 0.998222)
+bones/94/rotation = Quaternion(-0.127009, 0.00412367, -0.00623409, 0.991873)
+bones/96/rotation = Quaternion(0.00404084, 0.12143, 0.0400645, 0.991783)
+bones/98/rotation = Quaternion(-3.79503e-06, 0.636629, 0.77117, -1.1544e-05)
+
+[node name="Camera" parent="." index="1"]
+transform = Transform3D(68.5921, -32.4013, 65.1558, 8.9407e-06, 89.5396, 44.5271, -72.7676, -30.5421, 61.417, 7.35889, 4.95831, 6.92579)
+visible = false
+
+[node name="Light" parent="." index="2"]
+transform = Transform3D(-0.290865, -0.771101, 0.566393, -0.055189, 0.604525, 0.794672, -0.955171, 0.199884, -0.218391, 4.07625, 5.90386, -1.00545)
+visible = false
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "Armature_001|Armature_001|change-pose_251076"
+speed_scale = 1.5

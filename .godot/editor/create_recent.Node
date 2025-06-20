@@ -1,0 +1,5 @@
+StaticBody3D
+CollisionShape3D
+AnimationPlayer
+Node3D
+Area3D

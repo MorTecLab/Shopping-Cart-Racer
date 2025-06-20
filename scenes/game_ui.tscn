@@ -1,0 +1,282 @@
+[gd_scene load_steps=2 format=3]
+
+[sub_resource type="GDScript" id="ui_script"]
+script/source = "extends Control
+
+const HighScores = preload(\"res://scripts/high_scores.gd\")
+
+func _ready():
+	$GameOver.hide()
+	$Victory.hide()
+	$Message.hide()
+
+func update_timer(time: float):
+	var minutes = int(time / 60)
+	var seconds = int(time) % 60
+	var msec = int((time - int(time)) * 100)
+	$Timer.text = \"%02d:%02d.%02d\" % [minutes, seconds, msec]
+
+func show_message(text: String):
+	$Message.text = text
+	$Message.show()
+	
+	var tween = create_tween()
+	tween.tween_property($Message, 'modulate:a', 0.0, 2.0)
+	tween.tween_callback($Message.hide)
+
+func show_victory(time: float):
+	HighScores.save_score(time)
+	$Victory.show()
+	$Victory/Time.text = \"Your Time: %s\" % HighScores.format_time(time)
+	update_high_scores($Victory/HighScores)
+
+func show_game_over():
+	$GameOver.show()
+	update_high_scores($GameOver/HighScores)
+
+func update_high_scores(label: Label):
+	var scores = HighScores.get_formatted_scores()
+	if scores.is_empty():
+		label.text = \"No high scores yet!\"
+	else:
+		label.text = \"High Scores:\\n\" + \"\\n\".join(scores)
+
+func _on_restart_pressed():
+	get_parent().restart_game()
+
+func _on_return_to_menu_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/main_menu.tscn\")
+"
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("ui_script")
+
+[node name="Timer" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 46.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "00:00.00"
+horizontal_alignment = 2
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -13.0
+offset_right = 100.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Return the cart!"
+horizontal_alignment = 1
+
+[node name="Victory" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Victory"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Cart Returned!"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="Victory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -80.0
+offset_right = 150.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Time: 00:00.00"
+horizontal_alignment = 1
+
+[node name="HighScores" type="Label" parent="Victory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -20.0
+offset_right = 150.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "High Scores:
+1. 00:00.00"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="Victory"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -80.0
+offset_right = 0.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Play Again"
+
+[node name="MenuButton" type="Button" parent="Victory"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main Menu"
+
+[node name="GameOver" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 100.0
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Cart Destroyed!"
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -60.0
+offset_right = 150.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Better luck next time!"
+horizontal_alignment = 1
+
+[node name="HighScores" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -30.0
+offset_right = 150.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "High Scores:
+1. 00:00.00"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -80.0
+offset_right = 0.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Try Again"
+
+[node name="MenuButton" type="Button" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main Menu"
+
+[connection signal="pressed" from="Victory/RestartButton" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Victory/MenuButton" to="." method="_on_return_to_menu_pressed"]
+[connection signal="pressed" from="GameOver/RestartButton" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOver/MenuButton" to="." method="_on_return_to_menu_pressed"] 

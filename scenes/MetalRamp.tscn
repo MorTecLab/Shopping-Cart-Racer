@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq4okpcw6a7mo"]
+
+[ext_resource type="PackedScene" uid="uid://wpyoyvukjwrv" path="res://assets/mymodels/SteelRamp.glb" id="1_0clre"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vybe3"]
+size = Vector3(0.042038, 0.0280266, 0.001)
+
+[node name="SteelRampNode3d" type="Node3D"]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 2.52142, 1.38361, 0)
+
+[node name="SteelRamp" parent="." instance=ExtResource("1_0clre")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0492076, 0.00101157, 0.00156983)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SteelRamp" groups=["ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00259329, -0.00101157, -0.00156983)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SteelRamp/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -0.364731, -0.931113, 0, 0.931113, -0.364731, 0.00201565, -0.0272614, 0.0244747)
+shape = SubResource("BoxShape3D_vybe3")
+debug_color = Color(0.988235, 0.298039, 0.811765, 0.784314)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SteelRamp/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -0.568591, -0.822621, 0, 0.822621, -0.568591, 0.00150448, -0.0223173, 0.0130831)
+shape = SubResource("BoxShape3D_vybe3")
+debug_color = Color(0.988235, 0.298039, 0.811765, 0.784314)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="SteelRamp/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -0.66609, -0.745871, 0, 0.745871, -0.66609, 0.00150448, -0.0149327, 0.00333997)
+shape = SubResource("BoxShape3D_vybe3")
+debug_color = Color(0.988235, 0.298039, 0.811765, 0.784314)

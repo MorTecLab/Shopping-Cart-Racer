@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/sound_manager.gd" id="1_sound"]
+[ext_resource type="AudioStream" path="res://assets/sounds/Background_Music.mp3" id="2_bgm"]
+[ext_resource type="AudioStream" path="res://assets/sounds/Level_Pass.mp3" id="3_pass"]
+[ext_resource type="AudioStream" path="res://assets/sounds/Level_Fail.mp3" id="4_fail"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_sound")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_bgm")
+volume_db = -10.0
+
+[node name="LevelPass" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pass")
+volume_db = -5.0
+
+[node name="LevelFail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fail")
+volume_db = -5.0
+
+[connection signal="finished" from="LevelPass" to="." method="_on_jingle_finished"]
+[connection signal="finished" from="LevelFail" to="." method="_on_jingle_finished"] 

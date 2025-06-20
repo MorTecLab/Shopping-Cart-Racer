@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8j2u4q3y6m8x"]
+
+[ext_resource type="Script" uid="uid://bjnyp2vrxg315" path="res://scripts/cart_controller.gd" id="1_cart_controller"]
+[ext_resource type="PackedScene" uid="uid://cq71d4qphnhw1" path="res://assets/mymodels/ShoppingCart.glb" id="2_bttn7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(0.958032, 1.0322, 1.40147)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2"]
+albedo_color = Color(0.7, 0.7, 0.7, 1)
+metallic = 0.3
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3"]
+albedo_color = Color(0.6, 0.6, 0.6, 1)
+metallic = 0.4
+roughness = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+metallic = 0.8
+roughness = 0.2
+
+[node name="ShoppingCart" type="RigidBody3D" groups=["cart"]]
+mass = 25.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, 0.1, 0)
+can_sleep = false
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 8
+linear_damp = 0.2
+angular_damp = 0.8
+script = ExtResource("1_cart_controller")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0141724, 0.731826, 0.0214456)
+shape = SubResource("BoxShape3D_1")
+
+[node name="ShoppingCart" parent="." instance=ExtResource("2_bttn7")]
+transform = Transform3D(-39.35, 0, -3.44009e-06, 0, 39.35, 0, 3.44009e-06, 0, -39.35, 0.00657439, 0.710365, 0.0179771)
+
+[node name="CartBasket" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+visible = false
+size = Vector3(0.8, 1, 1.2)
+material = SubResource("StandardMaterial3D_2")
+
+[node name="Handle" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 1.2, -0.7)
+visible = false
+radius = 0.05
+height = 0.8
+material = SubResource("StandardMaterial3D_3")
+
+[node name="WheelFrontLeft" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.4, 0.15, 0.6)
+visible = false
+radius = 0.15
+height = 0.1
+material = SubResource("StandardMaterial3D_4")
+
+[node name="WheelFrontRight" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.4, 0.15, 0.6)
+visible = false
+radius = 0.15
+height = 0.1
+material = SubResource("StandardMaterial3D_4")
+
+[node name="WheelBackLeft" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.4, 0.15, -0.6)
+visible = false
+radius = 0.15
+height = 0.1
+material = SubResource("StandardMaterial3D_4")
+
+[node name="WheelBackRight" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.4, 0.15, -0.6)
+visible = false
+radius = 0.15
+height = 0.1
+material = SubResource("StandardMaterial3D_4")

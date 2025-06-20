@@ -1,0 +1,154 @@
+[gd_scene load_steps=17 format=3 uid="uid://b4u1p0c6jewel"]
+
+[ext_resource type="Script" uid="uid://byrl3c4c7qq1p" path="res://scripts/main.gd" id="1_m2u4f"]
+[ext_resource type="PackedScene" uid="uid://b8j2u4q3y6m8x" path="res://scenes/cart.tscn" id="2_cart"]
+[ext_resource type="Texture2D" uid="uid://pg8ulb3nds5k" path="res://assets/textures/CarparkGround.png" id="2_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://cawyaveolk5cy" path="res://scenes/parked_car.tscn" id="3_parked_car"]
+[ext_resource type="PackedScene" uid="uid://dsau3oj3bbe3s" path="res://scenes/tree.tscn" id="4_tree"]
+[ext_resource type="PackedScene" uid="uid://db54a28hcvy3a" path="res://scenes/cart_bay.tscn" id="5_cart_bay"]
+[ext_resource type="PackedScene" path="res://scenes/sound_manager.tscn" id="6_sound"]
+[ext_resource type="PackedScene" uid="uid://bsj77q0r4c6t3" path="res://scenes/policecar.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://lc80idmc4w6n" path="res://scenes/cone.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dq4okpcw6a7mo" path="res://scenes/MetalRamp.tscn" id="10_choun"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxk2p"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+albedo_texture = ExtResource("2_o6xl0")
+roughness = 0.8
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f3m8v"]
+material = SubResource("StandardMaterial3D_jxk2p")
+size = Vector2(100, 100)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_8j4nh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qc2ky"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_j2wjx"]
+sky_material = SubResource("ProceduralSkyMaterial_qc2ky")
+
+[sub_resource type="Environment" id="Environment_4u4yl"]
+background_mode = 2
+sky = SubResource("Sky_j2wjx")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+fog_density = 0.001
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_m2u4f")
+
+[node name="Ground" type="StaticBody3D" parent="." groups=["ground"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_f3m8v")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape3D_8j4nh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4u4yl")
+
+[node name="Cart" parent="." instance=ExtResource("2_cart")]
+transform = Transform3D(-0.10149, 0, 0.994837, 0, 1, 0, -0.994837, 0, -0.10149, -9.28552, 1, 7.5208)
+
+[node name="Camera3D" type="Camera3D" parent="Cart"]
+transform = Transform3D(-0.999964, 6.72899e-10, -0.00844722, -0.00257905, 0.952252, 0.305302, 0.00804388, 0.305313, -0.952218, 0, 2, -2.04374)
+current = true
+fov = 45.1763
+
+[node name="ParkedCar1" parent="." instance=ExtResource("3_parked_car")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -6.45841, 0.83686, 3.6623)
+
+[node name="ParkedCar2" parent="." instance=ExtResource("3_parked_car")]
+transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, -2.96751, 0.83686, -3.99151)
+
+[node name="ParkedCar3" parent="." instance=ExtResource("3_parked_car")]
+transform = Transform3D(-3.27835e-08, 0, 0.75, 0, 0.75, 0, -0.75, 0, -3.27835e-08, 2.46267, 0.83686, -4.07954)
+
+[node name="Tree1" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+
+[node name="Tree3" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.31019, 0, 10.7583)
+
+[node name="Tree2" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+
+[node name="Tree4" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.97826, 0, 8.80619)
+
+[node name="Bushes_Tree" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.17238, -2.63982, 7.95879)
+
+[node name="Bushes_Tree2" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53177, -2.22234, 6.69064)
+
+[node name="Bushes_Tree3" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53177, -2.99581, 7.80828)
+
+[node name="CartBay" parent="." instance=ExtResource("5_cart_bay")]
+transform = Transform3D(-5.34817e-08, 0, -1, 0, 1.12305, 0, 1.22352, 0, -4.37114e-08, 17.9157, 0, 0)
+
+[node name="SoundManager" parent="." instance=ExtResource("6_sound")]
+
+[node name="PoliceCar" parent="." groups=["obstacle"] instance=ExtResource("8_tipki")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.26987, -0.0629133, 3.46268)
+
+[node name="cone2" parent="." instance=ExtResource("9_85g3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.72244, 0.0502249, 3.92203)
+
+[node name="cone3" parent="." instance=ExtResource("9_85g3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0952, -1.47131, 7.88086)
+
+[node name="cone4" parent="." instance=ExtResource("9_85g3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9678, -1.47131, 6.70144)
+
+[node name="cone5" parent="." instance=ExtResource("9_85g3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2657, -1.47131, 5.86531)
+
+[node name="cone6" parent="." instance=ExtResource("9_85g3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.20314, -1.47131, 5.17439)
+
+[node name="Bushes_Tree4" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0194, -2.63982, 8.89119)
+
+[node name="Bushes_Tree5" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.66, -2.22234, 7.62304)
+
+[node name="Bushes_Tree6" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.66, -2.99581, 8.74068)
+
+[node name="Tree5" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(-0.838309, 0, -0.545195, 0, 1, 0, 0.545195, 0, -0.838309, 0.342839, 0, 11.0836)
+
+[node name="Tree6" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(-0.838309, 0, -0.545195, 0, 1, 0, 0.545195, 0, -0.838309, -3.16378, 0, 12.4596)
+
+[node name="Tree7" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(0.405524, 0, 0.914084, 0, 1, 0, -0.914084, 0, 0.405524, -7.30445, 0, 10.8909)
+
+[node name="Tree8" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(0.405524, 0, 0.914084, 0, 1, 0, -0.914084, 0, 0.405524, -2.12934, 0, 10.8909)
+
+[node name="Bushes_Tree7" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(-0.838309, 0, -0.545195, 0, 1, 0, 0.545195, 0, -0.838309, 2.64021, -2.63982, 10.9122)
+
+[node name="Bushes_Tree8" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(-0.838309, 0, -0.545195, 0, 1, 0, 0.545195, 0, -0.838309, 3.86863, -2.22234, 11.626)
+
+[node name="Bushes_Tree9" parent="." instance=ExtResource("4_tree")]
+transform = Transform3D(-0.838309, 0, -0.545195, 0, 1, 0, 0.545195, 0, -0.838309, 3.25929, -2.99581, 10.6891)
+
+[node name="SteelRampNode3d" parent="." groups=["ground"] instance=ExtResource("10_choun")]
+transform = Transform3D(24.6895, 0, -76.0949, 0, 80, 0, 76.0949, 0, 24.6895, 3.24869, 2.17756, 11.792)

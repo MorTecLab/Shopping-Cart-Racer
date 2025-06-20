@@ -1,0 +1,15 @@
+res://assets/materials/parking_lot.tres::cd2dc042284c8e4f3d10706d673ea58b::1745839566::res://.godot/exported/133200997/export-250bedacadc0de4917736a68d86baef6-parking_lot.res
+res://scenes/ani_idle_police_woman.tscn::244857f117188b1d3a0a774add098d6f::1746952200::res://.godot/exported/133200997/export-9a28dc607cb31f808f82eb36459a5e0f-ani_idle_police_woman.scn
+res://scenes/cart.tscn::4c3802e6029203f10f353f66464856dc::1746952200::res://.godot/exported/133200997/export-430b07143cbf1d2c22600e8b3f3097e5-cart.scn
+res://scenes/cart_bay.tscn::6a6ae7c01b6c99b323b04655a82494a1::1746952200::res://.godot/exported/133200997/export-79b8d10b326e1e0067fc5360e16b5076-cart_bay.scn
+res://scenes/character_medium.tscn::9f184cc28dbf2358b135481e5e878516::1746686574::res://.godot/exported/133200997/export-cf0d14fc42a52661f170d8ca777f4553-character_medium.scn
+res://scenes/cone.tscn::8c944f920697d1f8a50e940bd662ae32::1746952200::res://.godot/exported/133200997/export-44a3ff51db2aaa30f449cd4cd44c5044-cone.scn
+res://scenes/explosion.tscn::bbfee15f21599fbbbf37573960630aa6::1746952200::res://.godot/exported/133200997/export-19462905a0f3b4b39165a3350317f22c-explosion.scn
+res://scenes/game_ui.tscn::6ece5abdbcded51dba3acfa6740efea5::1746083034::res://.godot/exported/133200997/export-b1dc3a39ca5bc4d3f22bdf9178299c50-game_ui.scn
+res://scenes/main.tscn::56837dcd2549c980429508d2a2054dc5::1746952200::res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn
+res://scenes/main_menu.tscn::4660855e6fbb5766f07838da69cd2058::1746082996::res://.godot/exported/133200997/export-ea5c6ad4629af728dc514cefde332394-main_menu.scn
+res://scenes/MetalRamp.tscn::fd2f17282095ab9173dbc42eeff8602f::1746952200::res://.godot/exported/133200997/export-dfee72397d0e49df25294908531b9e97-MetalRamp.scn
+res://scenes/parked_car.tscn::7dcb3146d2ef2c73801cfa9f2f5f3d42::1746952200::res://.godot/exported/133200997/export-6c962ad5a163e6d2b70d5b9d415fab3f-parked_car.scn
+res://scenes/policecar.tscn::7555cff6a217c5d6bc77689c5707f1ea::1746952200::res://.godot/exported/133200997/export-e3584741df1b3c5de1bd4cb167707cf5-policecar.scn
+res://scenes/sound_manager.tscn::bcdeac4644fe16170504f1e4c83797e1::1745891808::res://.godot/exported/133200997/export-e0d92aa404bbbb6725bdbd56c82d273d-sound_manager.scn
+res://scenes/tree.tscn::14c478ec430b3252ed513bd365c81be9::1746952200::res://.godot/exported/133200997/export-a9120a52d578fc4f9832f17b0458a97d-tree.scn

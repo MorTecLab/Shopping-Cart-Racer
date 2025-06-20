@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://cawyaveolk5cy"]
+
+[ext_resource type="Script" uid="uid://cpt4go8c4wj5" path="res://scripts/parked_car.gd" id="1_car"]
+[ext_resource type="PackedScene" uid="uid://bsh15h6qivev8" path="res://assets/GLB Kenny Cars/sedan.glb" id="2_0ycgx"]
+[ext_resource type="PackedScene" uid="uid://b8roww1wukkk" path="res://assets/GLB Kenny Cars/police.glb" id="3_51p33"]
+
+[sub_resource type="BoxShape3D" id="box_collision"]
+size = Vector3(3.30665, 1.70077, 1.91975)
+
+[sub_resource type="StandardMaterial3D" id="mat_body"]
+albedo_color = Color(0.1, 0.3, 0.8, 1)
+metallic = 0.6
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="mat_wheel"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+metallic = 0.8
+roughness = 0.2
+
+[node name="ParkedCar" type="StaticBody3D" groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+script = ExtResource("1_car")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.614713, 0.266411, 0.0438538)
+shape = SubResource("box_collision")
+
+[node name="Body" type="CSGBox3D" parent="."]
+visible = false
+size = Vector3(7, 2.4, 3)
+material = SubResource("mat_body")
+
+[node name="WheelFL" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -2.4, -1.2, 1.4)
+visible = false
+radius = 0.64
+height = 0.5
+material = SubResource("mat_wheel")
+
+[node name="WheelFR" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 2.4, -1.2, 1.4)
+visible = false
+radius = 0.64
+height = 0.5
+material = SubResource("mat_wheel")
+
+[node name="WheelBL" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -2.4, -1.2, -1.4)
+visible = false
+radius = 0.64
+height = 0.5
+material = SubResource("mat_wheel")
+
+[node name="WheelBR" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 2.4, -1.2, -1.4)
+visible = false
+radius = 0.64
+height = 0.5
+material = SubResource("mat_wheel")
+
+[node name="sedan" parent="." instance=ExtResource("2_0ycgx")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0.669, -1.2, 0.017)
+
+[node name="police" parent="." instance=ExtResource("3_51p33")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0.527, -1.2, 0.133)
+visible = false
