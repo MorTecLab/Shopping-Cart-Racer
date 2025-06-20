@@ -15,21 +15,6 @@ ShoppingCartRacer/
 └── export/           # Export configurations and builds
 ```
 
-## Setup Instructions
-
-1. Install Godot 4.4.1
-2. Clone this repository
-3. Open the project in Godot
-4. Run the game from the main scene
-
-## Development Phases
-
-1. Setup and Project Structure
-2. Player Movement and Physics
-3. Wobble Effect
-4. Procedural Level Generation
-5. UI and Game States
-6. Export and Deployment
 
 ## Credits
 
